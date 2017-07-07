@@ -290,7 +290,7 @@ var newFriends = friends.filter(function (friend) {
 });
 console.log(newFriends) // ['Ean', 'Eric']
 
-//react .filter and .map list
+// react .filter and .map list
 class Users extends React.Component {
   render() {
 
@@ -335,5 +335,146 @@ ReactDOM.render(
   />,
   document.getElementById('app')
 );
+
+//
+
+
+
+/* Building UIs with Pure Functions and Function Composition and Nesting React Components  
+
+- a function takes in some data and returns a view
+
+Pure Funtions:
+  - Pure functions always return the same result given the same arguments. 
+  - Pure function's execution doesn't depend on the state of the application.
+  - Pure functions don't modify the variables outside of their scope.
+
+  React's render method needs to be a pure function and because it's a pure function, all of the benefits of pure functions now apply to your UI as well. 
+
+Introduction to PropTypes
+  -allow you to declare the "type" (string, number, function, etc) of each prop being passed to a component.
+  -npm install prop-types
+  */var React = require('react');
+    var PropTypes = require('prop-types')
+    class Users extends React.Component {
+      render() {
+        return (
+          <ul>
+            {this.props.list.map(function (friend) {
+              return <li>{friend}</li>
+            })}
+          </ul>
+        )
+      }
+    }
+    Users.propTypes = {
+      list: PropTypes.array.isRequired
+    }/*
+    - to use with functions - PropTypes.func, others: PropTypes.bool
+    - can customize your own proptypes
+
+//+
+//+
+//+
+//+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Section 3
+
+  /* The "This" keyword + Managing and Updating State
+
+  - Implicit binding
+  - Explicit binding
+  - new binding
+  - window binding
+
+  where is the function invoked
+
+  Implicit Binding
+    var me = {
+      name: 'Ty',
+      age: 25,
+      sayName: function() {
+        console.log(this.name);
+      }
+    };
+    me.sayName // 'Ty'
+    - the left of the "dot" . 
+    -when the function was invoked and what is to the left of the dot, that is what the keyword is referencing 
+
+  Explicit Binding
+    - Call, apply, bind
+
+     var sayName: function() {
+        console.log('my name is '+this.name);
+        };
+
+    var stacey = {
+      name: 'stacey',
+      age: 34
+    };
+
+    sayName.call(stacey); //my name is stacey
+    - .apply - can pass in an array of elements
+    - .bind - almost the same as .call, but creates a function in which you can call later
+
+  New Binding
+    - using capital letter to say its a constructor
+    var Animal = function(color,name,type){
+      //this = {}
+      this.color = color;
+      this.name = name;
+      this.type = type;    
+    };
+    var zebra = new Animal('black and white', 'Zorro', 'Zebra')
+
+  Window Binding
+    -
+    var sayAge = function() {
+      'use strict';
+      console.log(this.age);
+    }
+
+    var me = {
+      age: 25
+    }
+
+    sayAge(); // undefined if empty (), 
+    window.age = 35;
+    sayAge(); //undefined, 35, done want this key word to be bound to the window object 'use strict' and this wont be allowed
+
+
+Built Popular.js component for github battle 
+
+-.apply lets you pass in an array as the second argument, .call requires that parameters be listed explicitly
+
+-var myUser = { 
+   username: 'tyler', 
+   age: 25, 
+   email: 'tyler@gmail.com' 
+ }; 
+ var getMyUsername = function(){ 
+   console.log(this.username); 
+ }; 
+ setTimeout(getMyUsername, 3000);  //this gives you //undefined 
+
+ -.bind Returns a new function specifying the context ("this" keyword) inside that function
+*/
+
+//+
+//+
+//+
+//+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Section 4
+
+/*  Stateless Functional Compnents 
+
+
+
+
+
+
+
+
 
 

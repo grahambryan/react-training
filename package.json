@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "production": "webpack"
   },
   "babel": {
     "presets": [
@@ -15,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
