@@ -469,6 +469,30 @@ Built Popular.js component for github battle
 
 /*  Stateless Functional Compnents 
 
+"If you're using React correctly, you're going to notice you have a lot of components that simply take in some data via props and output some UI - that is, components with just a render method."
+
+- when it just has a render method you can remove the React.Component abstraction
+#e.g.  */
+//This 
+class HelloWorld extends React.Component {
+  render () {
+    return (
+      <div>Hello {this.props.name}</div>
+    )
+  }
+}
+ReactDOM.render(<HelloWorld name='Tyler' />, document.getElementById('app'))
+
+// Can be: 
+function HelloWorld (props) {
+  return (
+    <div>Hello {props.name}</div>
+  )
+}
+ReactDOM.render(<HelloWorld name='Tyler' />, document.getElementById('app'))
+
+
+
 
 
 
