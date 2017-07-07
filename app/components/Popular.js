@@ -43,6 +43,7 @@ class Popular extends React.Component {
 
 		this.updateLanguage = this.updateLanguage.bind(this); // takes in a context, and return a new funciton with this bound to whatever is bound from what is passed in
 	}
+
 	//update user language selection function - has state
 	updateLanguage(lang) {
 		this.setState(function () {
@@ -51,6 +52,7 @@ class Popular extends React.Component {
 			}
 		});
 	}
+
 	//Popular render method
 	render() {
 		return (
@@ -60,6 +62,8 @@ class Popular extends React.Component {
 					onSelect = {this.updateLanguage}
 				/>
 				<p> language selected: {this.state.selectedLanguage} </p>
+				<p> Hello Nathan, what is up????? </p> 
+				<p> Hello Nathan, what is up????? </p> 
 			</div>
 		)
 	}

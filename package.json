@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --port 3000 --open --hot --host 10.145.193.77",
     "production": "webpack"
   },
   "babel": {
