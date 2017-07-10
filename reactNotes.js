@@ -489,11 +489,68 @@ function HelloWorld (props) {
     <div>Hello {props.name}</div>
   )
 }
-ReactDOM.render(<HelloWorld name='Tyler' />, document.getElementById('app'))
+ReactDOM.render(<HelloWorld name='Tyler' />, document.getElementById('app'))/*
+
+- This is a statless function, or a presentational component without state 
+
+- If all your component has is a render() method, you can create a function that will just return the UI, 
+    - you will no longer have the use of "this" but just pass in "props"
+    
+/* Private Components in React*/
+
+function FriendItem (props) {
+  return <li>{props.friend}</li>
+}
+function FriendsList (props) {
+  return (
+    <h1>Friends:</h1>
+    <ul>
+      {props.friends.map((friend, index) => <FriendItem friend={friend} key={friend} />)}
+    </ul>
+  )
+}
+module.exports = FriendsList
+
+//Notice that all we've done is essentially created a "private component" just as we would a private function.
+
+//+
+//+
+//+
+//+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Section 5
+
+/*  Life Cycle Events + Ajax 
+
+React Life Cycle Events 
+  Render method in a React component needs to be a pure function. That means it needs to be stateless, 
+  it needs to not make any Ajax requests, etc. It should just receive state and props and then render a UI.
+  
+  1) When a component gets mounted to the DOM and unmounted.
+        - component is initialized and added to the DOM (mounting)
+        - when the component is removed from the DOM (unmounting)
+  2) When a component receives new data.
 
 
 
+  1) 
+  Establish some default props in our component
+    - .defaultProps
+  Set some initial state in our component
+    - us constructor (props) { super (props); this.state = {...}}
+    - update state by calling this.setState by passing in a function 
+  Make an Ajax request to fetch some data needed for this component
+    - componentDidMount () {return axios.get(this.props.url).then(this.props.callback)}
+  Set up any listeners (ie Websockets or Firebase listeners)
+    - ref.on('value', function () {this.setState(function () { return{...}})}
+  Remove any listeners you initially set up (when unmounted)
+    - ref.off()
 
+https://d2vvqscadf4c1f.cloudfront.net/RXZidTc7S5WEicK3fiNW_Screen%20Shot%202016-02-25%20at%2012.06.29%20PM.png
+
+#You should usually use componentDidMount over componentWillMount
+
+Popular.js
 
 
 

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --port 3000 --open --hot --host 10.145.193.77",
+    "start": "webpack-dev-server --port 3000 --open --hot --host 0.0.0.0",
+    "local": "webpack-dev-server --open",
     "production": "webpack"
   },
   "babel": {
@@ -16,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"

@@ -1,4 +1,6 @@
 var React = require('react')
+
+//Created components 
 var Popular = require('./Popular')
 
 // state
