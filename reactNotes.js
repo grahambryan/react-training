@@ -552,6 +552,219 @@ https://d2vvqscadf4c1f.cloudfront.net/RXZidTc7S5WEicK3fiNW_Screen%20Shot%202016-
 
 Popular.js
 
+//+
+//+
+//+
+//+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Section 6
+
+/* Intro to React Router V4
+
+  -Components are the heart of React's powerful, declarative programming model. 
+  -React Router is a collection of navigational components that 
+   compose declaratively with your application. 
+Basic example */
+
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+
+const BasicExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/topics">Topics</Link></li>
+      </ul>
+
+      <hr/>
+
+      <Route exact path="/" component={Home}/>
+      <Route path="/about" component={About}/>
+      <Route path="/topics" component={Topics}/>
+    </div>
+  </Router>
+)
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+)
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+)
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>
+          Rendering with React
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>
+          Components
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>
+          Props v. State
+        </Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.url}/:topicId`} component={Topic}/>
+    <Route exact path={match.url} render={() => (
+      <h3>Please select a topic.</h3>
+    )}/>
+  </div>
+)
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+)
+
+export default BasicExample/*
+
+  - Dynamic Routing, different then static routing
+
+Lets look at some differences in Express, Ember, Angular...
+In these frameworks, you declare your routes as part of your app’s 
+initialization before any rendering takes place.
+
+Express: 
+  app.get('/', handleIndex)
+  app.get('/invoices', handleInvoices)
+  app.get('/invoices/:id', handleInvoice)
+  app.get('/invoices/:id/edit', handleInvoiceEdit)
+
+  app.listen()   // NOTE: routes are declared before the app listens
+
+
+Ember:
+  Ember has a conventional routes.js file that the build reads and imports into the application for you. 
+  Again, this happens before your app renders. 
+    Router.map(function() {
+      this.route('about');
+      this.route('contact');
+      this.route('rentals', function() {
+        this.route('show', { path: '/:rental_id' });
+      });
+    });
+      
+    export defualt Router
+
+ ^^^ all "static routes"
+
+ React Router is not. ---------------
+  https://reacttraining.com/react-router/web/guides/philosophy
+ When we say dynamic routing, we mean routing that takes place as your app is rendering, 
+ not in a configuration or convention outside of a running app. 
+ That means almost everything is a component in React Router. */
+
+
+//First, grab yourself a Router component for the environment you’re targeting and render it at the top of your app.
+// react-native
+import { NativeRouter } from 'react-router-native'
+
+// react-dom (what we'll use here)
+import { BrowserRouter } from 'react-router-dom'
+
+ReactDOM.render((
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
+), el)
+// Next, grab the link component to link to a new location:
+const App = () => (
+  <div>
+    <nav>
+      <Link to="/dashboard">Dashboard</Link>
+    </nav>
+  </div>
+)
+//Finally, render a Route to show some UI when the user visits /dashboard.
+const App = () => (
+  <div>
+    <nav>
+      <Link to="/dashboard">Dashboard</Link>
+    </nav>
+    <div>
+      <Route path="/dashboard" component={Dashboard}/>
+    </div>
+  </div>
+)
+//The Route will render <Dashboard {...props}/> where props are some router specific things that look like 
+//{ match, location, history }. If the user is not at /dashboard then the Route will render null. That’s pretty much all there is to it.
+
+//Nested Routes
+const App = () => (
+  <BrowserRouter>
+    {/* here's a div */}
+    <div>
+      {/* here's a Route */}
+      <Route path="/tacos" component={Tacos}/>
+    </div>
+  </BrowserRouter>
+)
+
+// when the url matches `/tacos` this component renders
+const Tacos  = ({ match }) => (
+  // here's a nested div
+  <div>
+    {/* here's a nested Route,
+        match.url helps us make a relative path */}
+    <Route
+      path={match.url + '/carnitas'}
+      component={Carnitas}
+    />
+  </div>
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
