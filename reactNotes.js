@@ -735,6 +735,60 @@ const Tacos  = ({ match }) => (
 )
 
 
+//+
+//+
+//+
+//+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Section 7
+
+//Forms - github battle component 
+//see Battle.js - built two classes  
+
+/* 
+  controlled component - instead of going to the DOM you "bind" the object to a state property
+
+  - input field updates state
+  - incapulation 
+    - can use one component to incapsulate the complexity of any specific state and pass it down a funciton from the parent component to grab that piece of state.
+  - pasing a onSubmit to parent component 
+      - updating parent component state from child component 
+*/
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Section 8
+
+
+//Dynamic Rendering + Query parameters 
+
+//see Battle.js
+
+/* .reduce -----------
+
+Axios, Promises and Github API --- see api.js in utils/
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Section 9
+
+// Composition vs. props.children
+/*
+
+props.children 
+  <Clock>
+  12:49 AM
+</Clock>
+Now with the implementation of our Clock component, we'll need somehow to access 12:49 AM or whatever is between the opening and closing element in order to update it. React gives us an easy way to do this and that is via this.props.children. In this case this.props.children will evaluate to 12:49 AM.
+
+That's great, but what if our component is a little more complex?
+
+<Clock>
+  <Time />
+  <Period />
+</Clock>
+Now admittedly this is a bit of a weird implementation but it'll work. Now, as you might have guessed, this.props.children is an array of components rather than just a single component, since there are multiple components nested.
+
+So again, props.children in a component is just whatever is between the <Opening> and closing </Opening> blocks of a component.
+
+*/
+
 
 
 
