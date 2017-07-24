@@ -7,7 +7,7 @@ updates state based on click - running update language
 var React = require('react');;
 var PropTypes = require('prop-types');
 var api = require('../utils/api');
-
+var Loading = require('./Loading');
 
 //select language component - takes in props and renders some UI - stateless functional component 
 function SelectLanguage (props) {
@@ -113,7 +113,7 @@ class Popular extends React.Component {
 					onSelect = {this.updateLanguage}
 				/>
 				{!this.state.repos
-				  ? <p>LOADING!</p>
+				  ? <Loading text="DOWNLOADING" />
 				  : <RepoGrid repos={this.state.repos} />}
 			</div>
 		)
